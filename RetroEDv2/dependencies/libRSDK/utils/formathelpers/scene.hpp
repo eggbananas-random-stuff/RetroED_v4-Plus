@@ -61,7 +61,7 @@ public:
 
     QString filepath = "";
 
-    static const int entityLimit = 0x400;
+    static const int entityLimit = 0xF60;
 };
 
 } // namespace FormatHelpers
