@@ -2,9 +2,6 @@ name: Build RetroED
 
 on:
   push:
-    paths:
-      - RetroED/**
-      - .github/workflows/build.yml
     branches:
       - master
 
