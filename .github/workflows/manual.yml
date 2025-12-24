@@ -55,7 +55,7 @@ jobs:
         cache: true
     - name: Install Dependencies
       run: |
-        sudo apt install build-essential python3 python3-pip
+        sudo apt install build-essential python3 python3-pip libqt5svg5-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
         pip install pytz
         cd RetroEDv2
         python3 versiongen.py
