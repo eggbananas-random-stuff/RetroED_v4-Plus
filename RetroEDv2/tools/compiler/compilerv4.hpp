@@ -1,6 +1,6 @@
 #pragma once
 
-#define ENTITY_COUNT_v4     (0x4A0)
+#define ENTITY_COUNT_v4     (0x1000)
 #define TEMPENTITY_START_v4 (ENTITY_COUNT_v4 - 0x80)
 #define OBJECT_COUNT_v4     (0x100)
 #define TYPEGROUP_COUNT_v4  (0x103)
