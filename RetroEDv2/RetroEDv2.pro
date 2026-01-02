@@ -7,6 +7,8 @@ CONFIG += c++17 resources_big silent
 DEFINES += QT_DEPRECATED_WARNINGS #\
 #           QT_DISABLE_DEPRECATED_BEFORE=0x060000
 
+DEFINES += QT_NO_NATIVE_FILEDIALOG
+
 include(dependencies/phantom/phantom.pri)
 include(dependencies/QtGifImage/src/gifimage/qtgifimage.pri)
 include(dependencies/qtcolorwidgets/color_widgets.pri)
