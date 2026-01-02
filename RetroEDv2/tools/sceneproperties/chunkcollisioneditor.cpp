@@ -41,7 +41,7 @@ ChunkCollisionEditor::ChunkCollisionEditor(FormatHelpers::Chunks *chk, ushort cu
     collisionViewer = new ChunkColViewer(&selectedChunk, chunks, tiles, false);
     collisionViewer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    for (int i = 0; i < 0x400; ++i) {
+    for (int i = 0; i < 0x1000; ++i) {
         collisionViewer->cmask[0][i] = &viewer->tileconfig.collisionPaths[0][i];
         collisionViewer->cmask[1][i] = &viewer->tileconfig.collisionPaths[1][i];
     }

@@ -20,14 +20,14 @@ TilesetEditor::TilesetEditor(QList<QImage> &tileList, QList<PaletteColor> &pal, 
     for (int i = 0; i < pal.count(); ++i) clrTable.append(qRgb(pal[i].r, pal[i].g, pal[i].b));
 
     // Add any filler tiles
-    for (int t = tiles.count(); t < 0x400; ++t) {
+    for (int t = tiles.count(); t < 0x1000; ++t) {
         QImage tile = QImage(16, 16, QImage::Format_Indexed8);
         tile.setColorTable(clrTable);
         tiles.append(tile);
     }
 
     // Remove Excess tiles
-    for (int t = tiles.count(); t > 0x400; --t) tiles.removeAt(t);
+    for (int t = tiles.count(); t > 0x1000; --t) tiles.removeAt(t);
 
     viewer = new TilesetViewer(&selectedTile, tiles);
     viewer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -161,7 +161,7 @@ TilesetEditor::TilesetEditor(QList<QImage> &tileList, QList<PaletteColor> &pal, 
                         changedTiles[pos] = true;
                         tiles.replace(pos++, tile);
 
-                        if (pos >= 0x400) {
+                        if (pos >= 0x1000) {
                             x = img.width();
                             y = img.height();
                         }
@@ -188,7 +188,7 @@ TilesetEditor::TilesetEditor(QList<QImage> &tileList, QList<PaletteColor> &pal, 
                         changedTiles[pos] = true;
                         tiles.replace(pos++, tile);
 
-                        if (pos >= 0x400) {
+                        if (pos >= 0x1000) {
                             x = img.width();
                             y = img.height();
                         }

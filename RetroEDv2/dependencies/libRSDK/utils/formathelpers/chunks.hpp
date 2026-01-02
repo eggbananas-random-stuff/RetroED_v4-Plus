@@ -34,7 +34,7 @@ public:
     void read(byte ver, QString filename);
     void write(byte ver, QString filename);
 
-    Chunk chunks[0x200];
+    Chunk chunks[0x400];
 
     QString filePath = "";
 };

@@ -146,7 +146,7 @@ SceneViewer::SceneViewer(byte gameType, QWidget *parent) : QOpenGLWidget(parent)
         vertexList[i].color.setW(0);
     }
 
-    for (int i = 0; i < 0x400; ++i) {
+    for (int i = 0; i < 0x1000; ++i) {
         int o              = i * 4;
         tileUVArray[o + 0] = 0;
         tileUVArray[o + 1] = i * 0x10;
@@ -154,21 +154,21 @@ SceneViewer::SceneViewer(byte gameType, QWidget *parent) : QOpenGLWidget(parent)
         tileUVArray[o + 3] = i * 0x10 + 0x10;
 
         // FLIP X
-        o += 0x400 * 4;
+        o += 0x1000 * 4;
         tileUVArray[o + 0] = tileUVArray[i * 4 + 2];
         tileUVArray[o + 1] = tileUVArray[i * 4 + 1];
         tileUVArray[o + 2] = tileUVArray[i * 4 + 0];
         tileUVArray[o + 3] = tileUVArray[i * 4 + 3];
 
         // FLIP Y
-        o += 0x400 * 4;
+        o += 0x1000 * 4;
         tileUVArray[o + 0] = tileUVArray[i * 4 + 0];
         tileUVArray[o + 1] = tileUVArray[i * 4 + 3];
         tileUVArray[o + 2] = tileUVArray[i * 4 + 2];
         tileUVArray[o + 3] = tileUVArray[i * 4 + 1];
 
         // FLIP XY
-        o += 0x400 * 4;
+        o += 0x1000 * 4;
         tileUVArray[o + 0] = tileUVArray[i * 4 + 2];
         tileUVArray[o + 1] = tileUVArray[i * 4 + 3];
         tileUVArray[o + 2] = tileUVArray[i * 4 + 0];
@@ -224,10 +224,10 @@ void SceneViewer::initScene(QImage tileset)
 
     // Get Tiles (for tile list, tileset editing and collision viewer)
     tiles.clear();
-    colTexStore = new QImage(0x80, 0x400 * 0x10, QImage::Format_Indexed8);
+    colTexStore = new QImage(0x80, 0x1000 * 0x10, QImage::Format_Indexed8);
     colTexStore->setColorTable({ 0xFFFF00FF, 0xFFFFFF00, 0xFFFF0000, 0xFFFFFFFF, 0xFF808000});
     colTexStore->fill(0);
-    for (int i = 0; i < 0x400; ++i) {
+    for (int i = 0; i < 0x1000; ++i) {
         int tx         = ((i % (tileset.width() / 0x10)) * 0x10);
         int ty         = ((i / (tileset.width() / 0x10)) * 0x10);
         QImage tileTex = tileset.copy(tx, ty, 0x10, 0x10);
@@ -486,7 +486,7 @@ void SceneViewer::updateTileColMap(RSDKv5::TileConfig::CollisionMask *cmask, ush
 void SceneViewer::updateChunkColMap()
 {
     colTexStore->fill(0);
-    for (int i = 0; i < 0x400; ++i){
+    for (int i = 0; i < 0x1000; ++i){
         int tx         = ((i % (gfxSurface[0].width / 0x10)) * 0x10);
         int ty         = ((i / (gfxSurface[0].width / 0x10)) * 0x10);
         for (int c = 0; c < 2; ++c){
@@ -707,7 +707,7 @@ void SceneViewer::drawScene()
                     const QList<ushort> *row = &layers[l].layout.at(y);
                     for (int x = basedX; x < countX; ++x) {
                         ushort chunkID = row->at(x);
-                        if (chunkID != 0x0 && chunkID < 0x200) {
+                        if (chunkID != 0x0 && chunkID < 0x400) {
                             for (int ty = 0; ty < 8; ++ty) {
                                 for (int tx = 0; tx < 8; ++tx) {
                                     FormatHelpers::Chunks::Tile &info =
@@ -807,7 +807,7 @@ void SceneViewer::drawScene()
                                 }
                             } else {
                                 ushort chunkID = row->at(x);
-                                if (chunkID != 0x0 && chunkID < 0x200) {
+                                if (chunkID != 0x0 && chunkID < 0x400) {
                                     for (int ty = 0; ty < 8; ++ty) {
                                         for (int tx = 0; tx < 8; ++tx) {
                                             FormatHelpers::Chunks::Tile tile = chunkset.chunks[chunkID].tiles[ty][tx];

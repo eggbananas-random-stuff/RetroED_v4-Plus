@@ -162,6 +162,8 @@ public:
         byte down               = 0;
         byte jumpPress          = 0;
         byte jumpHold           = 0;
+        byte keyFlip            = 0;
+        byte loadObjects        = 0;
         byte trackScroll        = 0;
         byte flailing[5];
     };

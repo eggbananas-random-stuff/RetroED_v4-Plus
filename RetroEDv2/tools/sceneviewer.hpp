@@ -259,7 +259,7 @@ public:
     int addGraphicsFile(QString sheetPath, int sheetID, byte scope);
     void removeGraphicsFile(QString sheetPath, int slot);
 
-    ushort tileUVArray[0x400 * 4 * 4];
+    ushort tileUVArray[0x1000 * 4 * 4];
 
     inline QOpenGLTexture *
     createTexture(QImage src, QOpenGLTexture::Target target = QOpenGLTexture::Target::Target2D)

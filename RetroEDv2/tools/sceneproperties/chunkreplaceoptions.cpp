@@ -22,14 +22,14 @@ ChunkReplaceOptions::ChunkReplaceOptions(byte gameVer, FormatHelpers::Chunks *ch
     ui->chunkView->layout()->addWidget(chkView);
 
     ui->srcChunkList->clear();
-    for (int c = 0; c < (gameVer == ENGINE_v1 ? 0x100 : 0x200); ++c) {
+    for (int c = 0; c < (gameVer == ENGINE_v1 ? 0x100 : 0x400); ++c) {
         auto *item = new QListWidgetItem(QString::number(c), ui->srcChunkList);
         item->setIcon(QPixmap::fromImage(chunkList[c]));
         item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
     }
 
     ui->dstChunkList->clear();
-    for (int c = 0; c < (gameVer == ENGINE_v1 ? 0x100 : 0x200); ++c) {
+    for (int c = 0; c < (gameVer == ENGINE_v1 ? 0x100 : 0x400); ++c) {
         auto *item = new QListWidgetItem(QString::number(c), ui->dstChunkList);
         item->setIcon(QPixmap::fromImage(chunkList[c]));
         item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);

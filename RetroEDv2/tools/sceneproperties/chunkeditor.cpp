@@ -23,7 +23,7 @@ ChunkEditor::ChunkEditor(FormatHelpers::Chunks *chk, QList<QImage> &chunkList, Q
     ui->viewerFrame->layout()->addWidget(viewer);
 
     ui->chunkList->clear();
-    for (int c = 0; c < (gameVer == ENGINE_v1 ? 0x100 : 0x200); ++c) {
+    for (int c = 0; c < (gameVer == ENGINE_v1 ? 0x100 : 0x400); ++c) {
         auto *item = new QListWidgetItem(QString::number(c), ui->chunkList);
         item->setIcon(QPixmap::fromImage(chunkList[c]));
         item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
@@ -38,7 +38,7 @@ ChunkEditor::ChunkEditor(FormatHelpers::Chunks *chk, QList<QImage> &chunkList, Q
 
     chunkIDs.clear();
     changedChunks.clear();
-    for (int c = 0; c < (gameVer == ENGINE_v1 ? 0x100 : 0x200); ++c) {
+    for (int c = 0; c < (gameVer == ENGINE_v1 ? 0x100 : 0x400); ++c) {
         chunkIDs.append(c);
         changedChunks.append(false);
     }
@@ -294,9 +294,9 @@ ChunkEditor::ChunkEditor(FormatHelpers::Chunks *chk, QList<QImage> &chunkList, Q
             QString path = filedialog.selectedFiles()[0];
             int id       = 0;
             SetStatus("Exporting chunks as images...");
-            for (int c = 0; c < 0x200; ++c) {
+            for (int c = 0; c < 0x400; ++c) {
                 chunks->chunks[c].getImage(tileList).save(QString(path + "/Chunk %1.png").arg(id++));
-                SetStatusProgress(c / (float)0x200);
+                SetStatusProgress(c / (float)0x400);
             }
             SetStatus(QString("Exported chunks to %1/").arg(path));
         }

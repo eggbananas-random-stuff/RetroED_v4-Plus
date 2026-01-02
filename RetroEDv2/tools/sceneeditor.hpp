@@ -280,7 +280,7 @@ public:
     SceneEditor *parentWidget = nullptr;
 
 private:
-    ChunkLabel *labels[0x200];
+    ChunkLabel *labels[0x400];
 
     QScrollArea *scrollArea;
 };

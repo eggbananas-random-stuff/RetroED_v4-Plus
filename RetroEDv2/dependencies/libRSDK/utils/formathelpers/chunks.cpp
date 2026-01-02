@@ -11,7 +11,7 @@ void FormatHelpers::Chunks::read(byte ver, QString filename)
     Reader reader(filename);
     filePath = filename;
 
-    for (int c = 0; c < 0x200; ++c) {
+    for (int c = 0; c < 0x400; ++c) {
         for (int y = 0; y < 8; ++y) {
             for (int x = 0; x < 8; ++x) {
                 chunks[c].tiles[y][x].direction   = 0;
@@ -49,7 +49,7 @@ void FormatHelpers::Chunks::read(byte ver, QString filename)
         }
         case ENGINE_v2: {
             RSDKv2::Chunks *engineChunks = new RSDKv2::Chunks(reader);
-            for (int c = 0; c < 0x200; ++c) {
+            for (int c = 0; c < 0x400; ++c) {
                 for (int y = 0; y < 8; ++y) {
                     for (int x = 0; x < 8; ++x) {
                         chunks[c].tiles[y][x].direction =
@@ -71,7 +71,7 @@ void FormatHelpers::Chunks::read(byte ver, QString filename)
         }
         case ENGINE_v3: {
             RSDKv3::Chunks *engineChunks = new RSDKv3::Chunks(reader);
-            for (int c = 0; c < 0x200; ++c) {
+            for (int c = 0; c < 0x400; ++c) {
                 for (int y = 0; y < 8; ++y) {
                     for (int x = 0; x < 8; ++x) {
                         chunks[c].tiles[y][x].direction =
@@ -93,7 +93,7 @@ void FormatHelpers::Chunks::read(byte ver, QString filename)
         }
         case ENGINE_v4: {
             RSDKv4::Chunks *engineChunks = new RSDKv4::Chunks(reader);
-            for (int c = 0; c < 0x200; ++c) {
+            for (int c = 0; c < 0x400; ++c) {
                 for (int y = 0; y < 8; ++y) {
                     for (int x = 0; x < 8; ++x) {
                         chunks[c].tiles[y][x].direction =
@@ -157,7 +157,7 @@ void FormatHelpers::Chunks::write(byte ver, QString filename)
         }
         case ENGINE_v2: {
             RSDKv2::Chunks *engineChunks = new RSDKv2::Chunks;
-            for (int c = 0; c < 0x200; ++c) {
+            for (int c = 0; c < 0x400; ++c) {
                 for (int y = 0; y < 8; ++y) {
                     for (int x = 0; x < 8; ++x) {
                         engineChunks->chunkList[c].tiles[y][x].direction =
@@ -185,7 +185,7 @@ void FormatHelpers::Chunks::write(byte ver, QString filename)
         }
         case ENGINE_v3: {
             RSDKv3::Chunks *engineChunks = new RSDKv3::Chunks;
-            for (int c = 0; c < 0x200; ++c) {
+            for (int c = 0; c < 0x400; ++c) {
                 for (int y = 0; y < 8; ++y) {
                     for (int x = 0; x < 8; ++x) {
                         engineChunks->chunkList[c].tiles[y][x].direction =
@@ -213,7 +213,7 @@ void FormatHelpers::Chunks::write(byte ver, QString filename)
         }
         case ENGINE_v4: {
             RSDKv4::Chunks *engineChunks = new RSDKv4::Chunks;
-            for (int c = 0; c < 0x200; ++c) {
+            for (int c = 0; c < 0x400; ++c) {
                 for (int y = 0; y < 8; ++y) {
                     for (int x = 0; x < 8; ++x) {
                         engineChunks->chunkList[c].tiles[y][x].direction =
