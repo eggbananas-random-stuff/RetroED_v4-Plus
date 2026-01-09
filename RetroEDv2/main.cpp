@@ -95,6 +95,9 @@ int main(int argc, char *argv[])
 
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    #ifdef Q_OS_LINUX
+    QApplication::setAttribute(Qt::AA_DontUseNativeDialogs);
+    #endif
 
     QApplication a(argc, argv);
 
